@@ -1,1 +1,80 @@
+using Markdown
+using InteractiveUtils
+
+
+using Pkg
+
+
+Pkg.activate("Project.toml")
+
+
+#domain = [1,2,3,4]
+ @enum ColourDomain one two three four
+
+
+ColourDomain
+
+
+mutable struct CSPVar
+name::String
+#value::Union{Nothing,Any}
+#forbidden_values::Vector{Any}
+value::Union{Nothing,ColourDomain}
+forbidden_values::Vector{ColourDomain}
+domain_restriction_count::Int64
+end
+
+
+
+rand(setdiff(Set([1,2,3,4]),Set([2,3,4])))
+
+
+struct ColourCSP
+vars::Vector{CSPVar}
+constraints::Vector{Tuple{CSPVar,CSPVar}}
+end
+
+
+
+function solve_csp(pb::ColourCSP, all_assignments)
+		for cur_var in pb.vars
+			if cur_var.domain_restriction_count == 4
+				return []
+			else
+				next_val = rand(setdiff(Set([one,two,three,four]),
+Set(cur_var.forbidden_values)))
+
+					#assign the value to the variableq
+			    println(cur_var.forbidden_values)
+				  cur_var.value = next_val
+			  
+			#forward check
+				for cur_constraint in pb.constraints
+					if !((cur_constraint[1] == cur_var) || (cur_constraint[2] ==
+							cur_var))
+						continue
+					  else
+					if cur_constraint[1] == cur_var
+								push!(cur_constraint[2].forbidden_values, next_val)
+								cur_constraint[2].domain_restriction_count += 1
+						# if the count reaches four you should backtrack
+						# if the domain is a singleton (count == 3) propagate
+                    else
+                      push!(cur_constraint[1].forbidden_values, next_val)
+                       cur_constraint[1].domain_restriction_count += 1
+                     # if the count reaches four you should backtrack
+                     # if the domain is a singleton (count == 3) propagate
+
+		          end
+              end
+          end
+       # add the assignment to all_assignments
+      push!(all_assignments, cur_var.name => next_val)
+      end
+   end
+return all_assignments
+end
+
+
+x1 = CSPVar("X1",nothing, [], 0)
 
