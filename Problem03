@@ -78,3 +78,49 @@ end
 
 x1 = CSPVar("X1",nothing, [], 0)
 
+x2 = CSPVar("X2", nothing, [], 0)
+
+# ╔═╡ 22bf800e-afe1-11eb-21c2-df33d6264e57
+x3 = CSPVar("X3", nothing, [two, three, four], 0)
+
+
+# ╔═╡ 29bce5fe-afe1-11eb-383e-45f013e4db39
+x4 = CSPVar("X4", nothing, [], 0)
+
+# ╔═╡ 2fcd2cd0-afe1-11eb-3965-9dc868d35014
+x5 = CSPVar("X5", nothing, [], 0)
+
+# ╔═╡ 45c43100-afe1-11eb-3dd3-5977d722d286
+x6 = CSPVar("X6", nothing, [], 0)
+
+# ╔═╡ 49021df0-afe1-11eb-3ac7-3f3f693f26b7
+x7 = CSPVar("X7", nothing, [], 0)
+
+
+# ╔═╡ 52f9d820-afe1-11eb-2c8d-0d7d241b299e
+problem = ColourCSP([x1, x2, x3, x4, x5, x6, x7], [(x1,x2), (x1,x3), (x1,x4),
+(x1,x5), (x1,x6), (x2,x5), (x3,x4), (x4,x5), (x4,x6), (x5,x6), (x6,x7)])
+
+
+
+# ╔═╡ 61484240-afe1-11eb-11ef-637b53d25a03
+solve_csp(problem, [])
+
+# ╔═╡ Cell order:
+# ╠═b5e1c7a0-afe0-11eb-305e-d9766837bbba
+# ╠═c12eb190-afe0-11eb-170d-4ba49d740d41
+# ╠═c12d2af0-afe0-11eb-0bb1-f14d0ea5e898
+# ╠═4b4199b0-b0bd-11eb-39fa-7bc50ab4564e
+# ╠═c12bcb62-afe0-11eb-05d5-3b63dae23f78
+# ╠═fb6675d0-b0b4-11eb-14c9-cfcd21f19c4e
+# ╠═c12ba450-afe0-11eb-1568-b1c8baa29c04
+# ╠═f402a040-afe0-11eb-367b-cf9b4475be29
+# ╠═12a18610-afe1-11eb-1e82-ed9564cb476b
+# ╠═1b81b5c0-afe1-11eb-0e03-5bcb442e9045
+# ╠═22bf800e-afe1-11eb-21c2-df33d6264e57
+# ╠═29bce5fe-afe1-11eb-383e-45f013e4db39
+# ╠═2fcd2cd0-afe1-11eb-3965-9dc868d35014
+# ╠═45c43100-afe1-11eb-3dd3-5977d722d286
+# ╠═49021df0-afe1-11eb-3ac7-3f3f693f26b7
+# ╠═52f9d820-afe1-11eb-2c8d-0d7d241b299e
+# ╠═61484240-afe1-11eb-11ef-637b53d25a03
