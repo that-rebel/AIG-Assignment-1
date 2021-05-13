@@ -1,1 +1,114 @@
+### A Pluto.jl notebook ###
+# v0.14.5
+
+using Markdown
+using InteractiveUtils
+
+# ╔═╡ c234e820-b42c-11eb-34f5-b7a6b6cbb5aa
+begin
+	using Pkg
+	Pkg.activate("project.html")
+	using PlutoUI
+end
+
+
+# ╔═╡ 316202a5-1ebb-438c-804b-02bde5479363
+struct verbal
+	Name::String
+
+# ╔═╡ d84634a3-a0a1-4667-842f-6f981bbec7e8
+struct Action 
+  Name::String
+    Cost::Int64
+end
+
+# ╔═╡ 8a292fb7-3919-47f2-aa1d-e470425ae36d
+mutable struct state
+    Name::String
+    position::Int64
+	hValue::Int64
+
+end
+
+# ╔═╡ 81e55cd8-bc1c-442a-92c7-fbe178349f00
+begin
+	W = offices("WestOffice", 1, false, true, 1)
+	C1 = offices("CentralOffice01", 3, true, true, 2)
+	C2 = offices("CentralOffice02", 2, true, true, 3)
+	E= offices("EastOffice", 1, true, false, 4)
+	
+	Re = Action("Remain", 1)
+	Me = Action("MoveEast", 3)
+	Mw = Action("MoveWest", 1)
+	Co = Action("Collect", 5)
+	
+	Verbal = verbal("verbs")
+	
+end
+
+# ╔═╡ 8a367959-ff00-4d13-8a9a-d98df7569c37
+function start(hValue, position, cost)
+	hValue = 0
+	position = 1
+	path = hValue+cost
+	
+end
+
+	
+
+# ╔═╡ ab9279fa-a7ef-4ed7-9cea-e507a22e6c95
+function move(hValue, postion,Action,offices)
+	#two possible moves
+	
+		
+
+# ╔═╡ e68c4294-0900-47da-907e-fed9b34ff018
+#moves at start
+#ReCo = (1+5+6)
+#MeCo = (6+1=7)
+#After start verbal is position 1, office W. Office W is cleaned out.
+#verbal can now MeCo (6+0= 6)
+#verbal is now in C1 office, verbal can either
+#ReCo (3+7=10)
+#MeCo (5+7=12)
+#Verbal will ReCo
+#Still in C1, verbal can
+#ReCo (2+6=6=7)
+#MeCo(4+6=10)
+#Verbal will ReCo
+#Still in C1 verbal can
+#MeCo(5+7=12)
+
+# ╔═╡ f4f3b3e2-af07-471b-997b-980c74e9cbc9
+mutable struct offices
+	Name::String
+	hValue::Int64
+	neighW::Bool
+	neighE::Bool
+	position::Int64
+end
+
+# ╔═╡ 9426765d-fa01-4b43-af80-1033a1f25196
+begin
+	hValue = 7
+	offices = [W, C1, C2, E]
+	TransModel = Dict()
+	move = []
+	
+	
+	
+	global closeList = Array{state}[]
+end
+
+# ╔═╡ Cell order:
+# ╠═c234e820-b42c-11eb-34f5-b7a6b6cbb5aa
+# ╠═316202a5-1ebb-438c-804b-02bde5479363
+# ╠═d84634a3-a0a1-4667-842f-6f981bbec7e8
+# ╠═8a292fb7-3919-47f2-aa1d-e470425ae36d
+# ╠═f4f3b3e2-af07-471b-997b-980c74e9cbc9
+# ╠═81e55cd8-bc1c-442a-92c7-fbe178349f00
+# ╠═9426765d-fa01-4b43-af80-1033a1f25196
+# ╠═8a367959-ff00-4d13-8a9a-d98df7569c37
+# ╠═ab9279fa-a7ef-4ed7-9cea-e507a22e6c95
+# ╠═e68c4294-0900-47da-907e-fed9b34ff018
 
