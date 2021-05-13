@@ -1,1 +1,64 @@
+#structs
 
+struct TerminalNode
+	utility::Int64
+end
+
+
+struct playerNode
+	action::actionType
+	nodes::Union(Terminal,PlayerNode)
+end
+
+srtuct Game
+	initial::PlayerNode
+end
+
+#evaluate nodes
+
+function evaluate_node(node::TerminalNode)
+	return utility
+end
+
+function evaluate_node(node::PlayerNode)
+	if node.action == Pmin
+
+		return minimum(map(cur_node -> evaluate_node(cur_node),node.nodes)
+	else
+		return max(map(cur_node -> evaluate_node(cur_node),node.nodes)
+	end
+end
+
+function solve_game(game::Game)	
+	return evaluate_node(game.initial)
+end
+### ( α − β pruning)
+
+
+alpha>=beta
+function MinimumMaximum(node, alpha, beta, maxPlayer) 
+	if depth ==0   
+	return static evaluation
+end
+	if MaximizingPlayer then      #for Maximizer Player  
+	   maxEvaluate= -infinity              
+	   evaluation= minimax(child, depth, alpha, beta, false)  
+	  maxEva= max(maxEva, evaluation)   
+	  alpha= max(alpha, maxEva)     
+	   if beta<=alpha  
+ 
+	 return maxEvaluate  
+	   end
+	else
+		if beta<=alpha                         #for Minimizer player  
+	   minEvaluate= +infinity   
+	   
+	   for evaluation= minimax(child, depth-1, alpha, beta, true)  
+	   minEvaluate= minimum(minEvaluate, evaluation)   
+	   beta= minimum(beta, evaluation)  
+		       
+	 return minEvaluation
+	   end
+	end
+
+end  
